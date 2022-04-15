@@ -38,13 +38,13 @@ form {
     background-color: purple;
   }
   
-  /* Center the avatar image inside this container */
+  /* Center the logo image inside this container */
   .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
   }
   
-  /* Avatar image */
+  /* logo image */
   img.Fridge {
     width: 20%;
   }
