@@ -7,4 +7,37 @@
 </head>
 
 <body>
+    <form action="inventory.html" method="post">
+        <div class="container">
+            <p class="section-title">General Item Information</p>
+            <label for="item-name"><b>Item Name</b></label>
+            <input type="text" placeholder="Item Name" name="item-name" required>
+            <label for="expiration"><b>Expiration Date</b></label>
+            <input type="text" placeholder="Expiration Date" name="expiration" required>
+
+            <p class="section-title">Nutrition Facts</p>
+            <label for="fat"><b>Total Fat</b></label>
+            <input type="text" placeholder="Total Fat" name="fat" required>
+            <label for="serving-size"><b>Serving Size</b></label>
+            <input type="text" placeholder="Serving Size" name="serving-size" required>
+            <label for="calories"><b>Calories</b></label>
+            <input type="text" placeholder="Calories" name="calories" required>
+            <label for="sugar"><b>Sugar</b></label>
+            <input type="text" placeholder="Sugar" name="sugar" required>
+            <label for="total-calories"><b>Total Calories</b></label>
+            <input type="text" placeholder="Total Calories" name="total-calories" required>
+            <label for="sodium"><b>Sodium</b></label>
+            <input type="text" placeholder="Expiration Date" name="sodium" required>
+            <label for="protein"><b>Protein</b></label>
+            <input type="text" placeholder="Protein" name="protein" required>
+
+            <label for="quantity"><b>Quantity</b></label>
+            <input type="number" min="1" step="1" value="1" name="quantity" required>
+
+
+            <button type="submit">Add Item</button>
+            <button type="button" id="cancel-id" class="cancel-but" onclick="location.href='inventory.html';">Cancel</button>
+
+        </div>
+    </form>
 </body>

@@ -3,8 +3,15 @@
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="inventory.css">
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="additem.css">
+    <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
+    <script> 
+    $(function(){
+      $("#addnewform").load("../components/addnewitem.html"); 
+    });
+    </script> 
+    <script type='text/javascript' src='modal.js'> </script>
+
 </head>
 
 <body>
@@ -17,7 +24,7 @@
         <div></div>
         <img src="../assets\foodventorylogo.png" alt="Fridge" class="Fridge">
     </div>
-    <form action="/action_page.php">
+    <form action="javascript:toggleModal()">
         <p>Have you recorded this item before?</p>
         <label for="alreadyadded">Yes</label><br>
         <input type="radio" id="alreadyadded" name="additem" value="True"><br>
@@ -25,4 +32,10 @@
         <input type="radio" id="notaddedbefore" name="additem" value="False"><br>
         <button type="submit">Next</button>
     </form>
+    <div id="modal" class="modals">
+        <div class="modal-content">
+            <span id="close-button" class="close-buttons">&times;</span>
+            <div class="addnewform"></div>
+        </div>
+    </div>
 </body>
