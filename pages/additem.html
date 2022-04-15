@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="inventory.css">
+    <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 
 <body>
     <div class="topsection">
-        <h1 id="additemtitle" class="header">Add Food Item</h1>
+        <h1 id="additemtitle" class="header">Add Food</h1>
         <div></div>
         <div></div>
         <div></div>
@@ -16,4 +17,12 @@
         <div></div>
         <img src="../assets\foodventorylogo.png" alt="Fridge" class="Fridge">
     </div>
+    <form action="/action_page.php">
+        <p>Have you recorded this item before?</p>
+        <label for="alreadyadded">Yes</label><br>
+        <input type="radio" id="alreadyadded" name="additem" value="True"><br>
+        <label for="notaddedbefore">No</label><br>
+        <input type="radio" id="notaddedbefore" name="additem" value="False"><br>
+        <button type="submit">Next</button>
+    </form>
 </body>
