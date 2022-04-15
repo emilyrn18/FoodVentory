@@ -1,0 +1,50 @@
+  /* Center the logo image inside this container */
+
+.topsection {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-color: #e9e9e9;
+}
+
+.topsection.header {
+    flex:1;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+/* logo image */
+img.Fridge {
+    float:right;
+    clear:both;
+    padding-top: 6px;
+    margin-right: 16px;
+}
+
+.inventory {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+div.scroll {
+    margin:4px, 4px;
+    padding:4px;
+    height: 700px;
+    background-color: #e9e9e9;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+div.foodcard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 6px;
+}
+
+.deletebut {
+    background-color: red;
+}
