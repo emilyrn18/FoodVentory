@@ -3,9 +3,13 @@ const app = express();
 const port = 8000;                  //port number where your server will be listening
 const path = require('path');
 
+const dotenv = require('dotenv')
+dotenv.config({path: './.env'})
+
 // app.set('html', __dirname + 'html')
 app.use(express.static(__dirname + '/public'));
 
+const db = require('./public/models/db')
 
 // app.get('/', (req, res) => {        //get requests to the root ("/") will route here
 //     res.sendFile('login.html', { root: path.join(__dirname, '/public/html') });                   
