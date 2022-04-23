@@ -37,6 +37,13 @@ form {
     padding: 10px 18px;
     background-color: purple;
   }
+
+  .cancel-but {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    background-color: red;
+  }
   
   /* Center the logo image inside this container */
   .imgcontainer {

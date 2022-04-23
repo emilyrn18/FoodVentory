@@ -37,3 +37,10 @@ button {
 button:hover {
 opacity: 0.8;
 }
+
+.cancel-but {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    background-color: red;
+  }
