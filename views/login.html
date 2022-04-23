@@ -1,0 +1,28 @@
+<!-- Resource: https://www.w3schools.com/howto/howto_css_login_form.asp -->
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+
+<body>
+    <form action="html/inventory.html">
+        <div class="imgcontainer">
+          <img src="assets/foodventorylogo.png" alt="Fridge" class="Fridge">
+        </div>
+      
+        <div class="container">
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" required>
+      
+          <label for="pass"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="pass" required>
+      
+          <button type="submit">Login</button>
+          <button type="button" id="CreateAccountid" class="CreateAccount" onclick="location.href='html/createaccount.html';">Create Account</button>
+
+        </div>
+      </form>
+</body>

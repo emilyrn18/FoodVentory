@@ -7,31 +7,28 @@ const path = require('path');
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('login.html', { root: path.join(__dirname, '/public/html') });                   
-});
+// app.get('/', (req, res) => {        //get requests to the root ("/") will route here
+//     res.sendFile('login.html', { root: path.join(__dirname, '/public/html') });                   
+// });
 
-app.get('/createacc', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('createaccount.html', { root: path.join(__dirname, '/public/html') });                    
-});
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
-app.get('/inventory', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('inventory.html', { root: path.join(__dirname, '/public/html') });                    
-});
-app.get('/additem', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('additem.html', { root: path.join(__dirname, '/public/html') });                    
-});
-app.get('/addnew', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('addnewitem.html', { root: path.join(__dirname, '/public/html') });                    
-});
+const loginRouter = require('./public/routes/login')
+const createAccRouter = require('./public/routes/createaccount')
+const addItemRouter = require('./public/routes/additem')
+const newItemRouter = require('./public/routes/addnewitem')
+const oldItemRouter = require('./public/routes/addolditem')
+const inventoryRouter = require('./public/routes/inventory')
 
-app.get('/addold', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('addolditem.html', { root: path.join(__dirname, '/public/html') });                    
-});
-
-app.get('/nutrition', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('nutrition.html', { root: path.join(__dirname, '/public/components') });                    
-});
+app.use('/', createAccRouter)
+app.use('/login', loginRouter)
+app.use('/additem', addItemRouter)
+app.use('/addnewitem', newItemRouter)
+app.use('/addolditem', oldItemRouter)
+app.use('/inventory', inventoryRouter)
 
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`); 

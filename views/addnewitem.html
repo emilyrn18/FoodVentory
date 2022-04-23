@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/addItemForm.css">
+</head>
+
+<body>
+    <form id="no-form" action="html/inventory.html">
+        <div class="container">
+            <h2 class="section-title">General Item Information</h2>
+            <label for="item-name"><b>Item Name</b></label>
+            <input type="text" placeholder="Item Name" name="item-name" required>
+            <label for="expiration"><b>Expiration Date</b></label>
+            <input type="date" placeholder="Expiration Date" name="expiration" required>
+
+            <h2 class="section-title">Nutrition Facts</h2>
+            <label for="fat"><b>Total Fat</b></label>
+            <input type="number" placeholder="Total Fat" name="fat" required>
+            <label for="serving-size"><b>Serving Size</b></label>
+            <input type="number" placeholder="Serving Size" name="serving-size" required>
+            <label for="calories"><b>Calories</b></label>
+            <input type="number" placeholder="Calories" name="calories" required>
+            <label for="sugar"><b>Sugar</b></label>
+            <input type="number" placeholder="Sugar" name="sugar" required>
+            <label for="total-calories"><b>Total Calories</b></label>
+            <input type="number" placeholder="Total Calories" name="total-calories" required>
+            <label for="sodium"><b>Sodium</b></label>
+            <input type="number" placeholder="Sodium" name="sodium" required>
+            <label for="protein"><b>Protein</b></label>
+            <input type="number" placeholder="Protein" name="protein" required>
+
+            <label for="quantity"><b>Quantity</b></label>
+            <input type="number" min="1" step="1" value="1" name="quantity" required>
+
+
+            <button type="submit">Add Item</button>
+            <button type="button" id="cancel-id" class="cancel-but" onclick="location.href='html/inventory.html';">Cancel</button>
+
+        </div>
+    </form>
+</body>

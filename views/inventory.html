@@ -1,0 +1,57 @@
+<!-- Resources:
+https://www.geeksforgeeks.org/making-a-div-vertically-scrollable-using-css/#:~:text=For%20vertical%20scrollable%20bar%20use,div%20will%20be%20vertically%20scrollable.
+https://www.w3schools.com/howto/howto_css_searchbar.asp
+ -->
+
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/inventory.css">
+    <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
+    <script> 
+        $(function(){
+        $(".fooditem").load("../components/fooditem.html"); 
+        });
+    </script> 
+</head>
+
+<body>
+    <div class="topsection">
+        <h1 id="welcomeTitle" class="header">Welcome!</h1>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <img src="assets\foodventorylogo.png" alt="Fridge" class="Fridge">
+    </div>
+    <section class="inventory">
+        <div class="bottomsection">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search...">                
+                <button id="search-btn" type="submit">Submit</button>
+                <button id="add-btn" type="button" class="additem" onclick="location.href='html/additem.html';">Add Item</button>
+            </form>
+            
+            <div class="scroll">
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+                <div class="fooditem"></div>
+            </div>
+
+        </div>
+    </section>
+</body>
