@@ -1,0 +1,13 @@
+.foodtype{
+    background-color: lightskyblue;
+    border-radius: 1px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+#foodtype-buttons {
+    /* float: center; */
+    float: center;
+  }
