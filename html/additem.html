@@ -7,11 +7,11 @@
     <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
     <script>
         function yesForm() {
-            document.item_form_part_one.action = "login.html";
+            document.item_form_part_one.action = "addolditem.html";
         }
     </script>
     <script>
-        function NoForm() {
+        function noForm() {
             document.item_form_part_one.action = "addnewitem.html";
         }
     </script>
@@ -36,7 +36,7 @@
             <button id="yes-before" type="submit" value="Yes" onclick="yesForm()">Yes</button>
         </div>
         <div>
-            <button id="no-before" type="submit" value="No" onclick="NoForm()">No</button>
+            <button id="no-before" type="submit" value="No" onclick="noForm()">No</button>
         </div>
     </form>
 </body>
