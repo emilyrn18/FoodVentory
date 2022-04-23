@@ -1,0 +1,15 @@
+button {
+    width:40%;
+}
+
+div.foodcard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 6px;
+}
+
+.deletebut {
+    background-color: red;
+}
