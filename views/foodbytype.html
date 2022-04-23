@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="../css/inventory.css">
     <link rel="stylesheet" type="text/css" href="../css/foodbytype.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+
     <!-- source: @https://www.anychart.com/blog/2017/12/06/pie-chart-create-javascript/ -->
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
@@ -23,14 +25,14 @@
 <body>
 
     <body>
+        <div class="topnav">
+            <a class="active" href="/inventory">Inventory</a>
+            <a href="/additem">Add Item</a>
+            <a href="/foodbytype">Data Analytics</a>
+            <a id="logout" href="/">Logout</a>
+        </div>
         <div class="topsection">
             <h1 id="welcomeTitle" class="header">Food Breakdown</h1>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <img src="../assets\foodventorylogo.png" alt="Fridge" class="Fridge">
         </div>
 
         <div id="chart" ></div>
