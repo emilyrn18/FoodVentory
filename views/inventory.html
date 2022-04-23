@@ -9,6 +9,8 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/inventory.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+
     <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
     <script> 
         $(function(){
@@ -18,15 +20,22 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
 </head>
 
 <body>
-    <div class="topsection">
+    <div class="topnav">
+        <a class="active" href="/inventory">Inventory</a>
+        <a href="/additem">Add Item</a>
+        <a href="/dataanalytics">Data Analytics</a>
+    </div>
+    <h1 id="welcomeTitle" class="header">Welcome!</h1>
+
+    <!-- <div class="topsection">
         <h1 id="welcomeTitle" class="header">Welcome!</h1>
         <div></div>
         <div></div>
         <div></div>
         <div></div>
-        <div></div>
-        <img src="assets\foodventorylogo.png" alt="Fridge" class="Fridge">
-    </div>
+        <div></div> -->
+        <!-- <img src="assets\foodventorylogo.png" alt="Fridge" class="Fridge"> -->
+    <!-- </div> -->
     <section class="inventory">
         <div class="bottomsection">
             <form action="/action_page.php">
