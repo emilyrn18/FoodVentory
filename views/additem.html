@@ -4,22 +4,29 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/additem.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+
     <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
     <script>
         function yesForm() {
-            document.item_form_part_one.action = "addolditem.html";
+            document.item_form_part_one.action = "/addolditem";
         }
     </script>
     <script>
         function noForm() {
-            document.item_form_part_one.action = "addnewitem.html";
+            document.item_form_part_one.action = "/addnewitem";
         }
     </script>
 
 </head>
 
 <body>
-    <div class="topsection">
+    <div class="topnav">
+        <a href="/inventory">Inventory</a>
+        <a class="active"href="/additem">Add Item</a>
+        <a href="/dataanalytics">Data Analytics</a>
+    </div>
+    <!-- <div class="topsection">
         <h1 id="additemtitle" class="header">Add Food</h1>
         <div></div>
         <div></div>
@@ -27,7 +34,7 @@
         <div></div>
         <div></div>
         <img src="assets\foodventorylogo.png" alt="Fridge" class="Fridge">
-    </div>
+    </div> -->
     <form name="item_form_part_one">
         <div>
             <p>Have you recorded this item before?</p>
