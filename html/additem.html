@@ -5,12 +5,16 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="../css/additem.css">
     <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
-    <script> 
-    $(function(){
-      $("#addnewform").load("../components/addnewitem.html"); 
-    });
-    </script> 
-    <script type='text/javascript' src='modal.js'> </script>
+    <script>
+        function yesForm() {
+            document.item_form_part_one.action = "login.html";
+        }
+    </script>
+    <script>
+        function NoForm() {
+            document.item_form_part_one.action = "addnewitem.html";
+        }
+    </script>
 
 </head>
 
@@ -24,18 +28,15 @@
         <div></div>
         <img src="../assets\foodventorylogo.png" alt="Fridge" class="Fridge">
     </div>
-    <form action="javascript:toggleModal()">
-        <p>Have you recorded this item before?</p>
-        <label for="alreadyadded">Yes</label><br>
-        <input type="radio" id="alreadyadded" name="additem" value="True"><br>
-        <label for="notaddedbefore">No</label><br>
-        <input type="radio" id="notaddedbefore" name="additem" value="False"><br>
-        <button type="submit">Next</button>
-    </form>
-    <div id="modal" class="modals">
-        <div class="modal-content">
-            <span id="close-button" class="close-buttons">&times;</span>
-            <div class="addnewform"></div>
+    <form name="item_form_part_one">
+        <div>
+            <p>Have you recorded this item before?</p>
         </div>
-    </div>
+        <div>
+            <button id="yes-before" type="submit" value="Yes" onclick="yesForm()">Yes</button>
+        </div>
+        <div>
+            <button id="no-before" type="submit" value="No" onclick="NoForm()">No</button>
+        </div>
+    </form>
 </body>
