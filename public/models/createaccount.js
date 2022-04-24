@@ -1,22 +1,30 @@
 const db = require('./db'); //require the database
 //for encrypting the password
-const bcrypt = require('bcrypt') 
+const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 
 //getting values from the user and storing in the database
-exports.createaccount = async(req, res) => {
+exports.createacc = async(req, res) => {
     try {
 
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      db.query("INSERT INTO users (Name, Institution, Email, Password) VALUES ('"+req.body.name+"','"+req.body.institution+"','"+req.body.email+"','"+hashedPassword+"')", (error, result) => {
+      const name = req.body.fname + " " + req.body.lname;
+      // console.log("User name", name);
+      const uniqueId = crypto.randomBytes(4).toString('hex');
+      // console.log("My id", uniqueId);
+
+      db.query("INSERT INTO user (UserID, Name, Age, Username, Password) VALUES ('"+uniqueId+"','"+name+"','"+req.body.bdate+"','"+req.body.email+"','"+hashedPassword+"')", (error, result) => {
         if(error){
           console.log(error);
         }else{
-          res.send("Success! You are now registered")
+          //res.send("Success! You are now registered")
+          res.status(200).redirect('/')
           //todo: maybe tell the user to go to login, redirecting to login after account creation
         }
       })
     } 
-    catch {
+    catch(e) {
+        console.log(e);
         res.send("Error! Please try again")
     }
 }

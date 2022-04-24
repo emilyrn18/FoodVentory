@@ -2,9 +2,13 @@ const express = require('express'); //Import the express dependency
 const app = express();       
 const port = 8000;                  //port number where your server will be listening
 const path = require('path');
+const bodyParser = require('body-parser')
 
 const dotenv = require('dotenv')
 dotenv.config({path: './.env'})
+
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
 // app.set('html', __dirname + 'html')
 app.use(express.static(__dirname + '/public'));
