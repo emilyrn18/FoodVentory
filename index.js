@@ -21,8 +21,10 @@ const db = require('./public/models/db')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 
 const loginRouter = require('./public/routes/login')
 const createAccRouter = require('./public/routes/createaccount')
@@ -37,7 +39,7 @@ app.use('/createacc', createAccRouter)
 app.use('/additem', addItemRouter)
 app.use('/addnewitem', newItemRouter)
 app.use('/addolditem', oldItemRouter)
-app.use('/inventory', inventoryRouter)
+app.use('/inventory', inventoryRouter) 
 app.use('/foodbytype', foodbytypeRouter)
 
 app.listen(port, () => {
