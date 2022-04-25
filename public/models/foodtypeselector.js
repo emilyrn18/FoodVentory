@@ -75,20 +75,35 @@ exports.addolditem = async(req, res) => {
   console.log("inside old item function");
   try {
     const itemName = req.body.currentfooditems;
+    const uniqueUserId = 'b65207cc';
     const quantityVar = req.body.quantity;
-    db.query("SELECT quantity FROM food WHERE name='"+itemName+"'", (error, quantity_in_inventory) => {
+    const exp = req.body.expiration;
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+    db.query("SELECT Cost, Storage, NutritionID, FoodTypeID FROM food WHERE name='"+itemName+"' LIMIT 1", (error, foodinfo) => {
       if(error){
         console.log(error);
       }else{
-        var newQuantity = quantity_in_inventory[0].quantity + parseInt(quantityVar);
-        db.query("UPDATE food SET quantity='"+newQuantity+"' WHERE name='"+itemName+"'", (error, response) => {
-          if(error){
-            console.log(error);
-          }else{
-            console.log("Success add old food item");
-            res.status(200).redirect('/inventory');
-          }
-        })
+        console.log(foodinfo[0]);
+
+        for(i=0;i<quantityVar;i++){
+          const uniqueItemId = Math.floor(Math.random() * 1000000000);
+          db.query("INSERT INTO food (ItemID, User_ID, NutritionID, FoodTypeID, Cost, Expiration_Date, Purchase_Time, Storage, name) VALUES ('"+uniqueItemId+"','"+uniqueUserId+"','"+foodinfo[0].NutritionID+"','"+foodinfo[0].FoodTypeID+"','"+foodinfo[0].Cost+"','"+exp+"','"+today+"','"+foodinfo[0].Storage+"','"+itemName+"')", (error, result2) => {
+            if(error){
+              console.log(error);
+            }else{
+              console.log("Success add food item");
+            }
+          })
+        }
+        console.log("DONE!");
+        res.status(200).redirect('/inventory');
       }
     })
 
