@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/foodbytype.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
 
+
     <!-- source: @https://www.anychart.com/blog/2017/12/06/pie-chart-create-javascript/ -->
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
@@ -20,6 +21,22 @@
             }
         }
     </script>
+
+        <!-- @source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce -->
+        <%    function groupBy(objectArray, property) {           %>
+        <%        return objectArray.reduce(function (acc, obj) { %>
+        <%          let key = obj[property]    %>
+        <%            if (!acc[key]) {  %>
+        <%            acc[key] = []  %>
+        <%          }  %>
+        <%        if (obj['Use_Time'] !== null  ){ %>
+        <%          acc[key].push(obj);  %>
+        <%        }  else {    %>
+        <%          acc[key].unshift(obj);  %>
+        <%        }   %>
+        <%          return acc  %>
+        <%        }, {})  %>
+        <%      }  %>
 </head>
 
 <body>
@@ -38,44 +55,46 @@
         <div id="chart" ></div>
         <script>
             anychart.onDocumentReady(function () {
-
                 var data = [
-                    { x: "Baked", value: 4 },
-                    { x: "Dairy", value: 5 },
                     { x: "Meat", value: 4 },
-                    { x: "Fruit", value: 12 }
+                    { x: "Dairy", value: 5 },
+                    { x: "Vegetables", value: 4 },
+                    { x: "Fruits", value: 12 },
+                    { x: "Carbs", value: 12 }
                 ];
 
                 var chart = anychart.pie();
-                chart.title("Food breakdown");
+                chart.title("Food Inventory Breakdown");
                 chart.data(data);
                 chart.container('chart');
                 chart.draw();
                 chart.width = '1000px';
                 chart.height = '1000px';
-
-
-
             });
-
         </script>
 
 <div id="foodtype-buttons">
-        <button id="bread-foodtype" class="foodtype" onclick="toggleReadMore()"> Baked </button>
-        <button id="dairy-foodtype" class="foodtype" onclick="toggleReadMore()"> Dairy </button>
+        <% var t = groupBy(result, 'name'); %>
+        <% var linkbldr = "/foodbytype/analytics/" + t[key][0]['FoodTypeID']; %>
         <button id="meat-foodtype" class="foodtype" onclick="toggleReadMore()"> Meat </button>
-        <button id="fruit-foodtype" class="foodtype" onclick="toggleReadMore()"> Fruit </button>
+        <button id="dairy-foodtype" class="foodtype" onclick="toggleReadMore()"> Dairy </button>
+        <button id="veggie-foodtype" class="foodtype" onclick="toggleReadMore()"> Vegetables </button>
+        <button id="fruit-foodtype" class="foodtype" onclick="toggleReadMore()"> Fruits </button>
+        <button id="carb-foodtype" class="foodtype" onclick="toggleReadMore()"> Carbs </button>
+        <button id="all-foodtype" class="foodtype" onclick="toggleReadMore()"> All </button>
+
     </div>
         <span id="foodtype-list">
             <section class="inventory">
-                <div class="scroll">
-                    <div class="fooditem"></div>
-                    <div class="fooditem"></div>
-                    <div class="fooditem"></div>
-                    <div class="fooditem"></div>
-                    <div class="fooditem"></div>
-                    <div class="fooditem"></div>
-                </div>
+                <div id="food-content" class="scroll">
+                    <% Object.keys(t).forEach( key => { %>
+                    <% if(t[key][0]['Use_Time'] === null) { %>
+                        <div class="foodcard">
+                            <p class="foodname"><%= key %></p>
+                            <p class="quantity"><%= t[key].length %></p>
+                            <button type="button" id="nutrition" class="nutritionbut" onclick="location.href='nutrition';">Nutrition Facts</button>
+                        </div>
+                    <% }}) %> 
                 </div>
             </section>
         </span>
