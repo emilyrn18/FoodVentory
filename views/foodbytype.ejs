@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="../css/inventory.css">
-    <link rel="stylesheet" type="text/css" href="../css/foodbytype.css">
-    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/../css/inventory.css">
+    <link rel="stylesheet" type="text/css" href="/../css/foodbytype.css">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
 
 
     <!-- source: @https://www.anychart.com/blog/2017/12/06/pie-chart-create-javascript/ -->
@@ -74,17 +74,19 @@
             });
         </script>
 
-<div id="foodtype-buttons">
+        <div id="foodtype-buttons">
         <% var t = groupBy(result, 'name'); %>
-        <% var linkbldr = "/foodbytype/analytics/" + t[key][0]['FoodTypeID']; %>
-        <button id="meat-foodtype" class="foodtype" onclick="toggleReadMore()"> Meat </button>
-        <button id="dairy-foodtype" class="foodtype" onclick="toggleReadMore()"> Dairy </button>
-        <button id="veggie-foodtype" class="foodtype" onclick="toggleReadMore()"> Vegetables </button>
-        <button id="fruit-foodtype" class="foodtype" onclick="toggleReadMore()"> Fruits </button>
-        <button id="carb-foodtype" class="foodtype" onclick="toggleReadMore()"> Carbs </button>
-        <button id="all-foodtype" class="foodtype" onclick="toggleReadMore()"> All </button>
+        <% var linkbldr = "/foodbytype/showType/"; %>
+            <form name="dataform" action="/foodbytype" method="POST">
+                <button id="meat-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+0 %>> Meat </button>
+                <button id="dairy-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+1 %>> Dairy </button>
+                <button id="veggie-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+2 %>> Vegetables </button>
+                <button id="fruit-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+3 %>> Fruits </button>
+                <button id="carb-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+4 %>> Carbs </button>
+            </form>
+            <button id="all-foodtype" class="foodtype" onclick="location.href='/foodbytype';"> All </button>
 
-    </div>
+        </div>
         <span id="foodtype-list">
             <section class="inventory">
                 <div id="food-content" class="scroll">

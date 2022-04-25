@@ -11,8 +11,9 @@ router.get('/', function(req, res) {
           if(error){
             console.log(error);
           }else{
+            console.log("getting the results");
             res.render('foodbytype', {'result': result, 'post': false})
-  
+            
           }
         })
       } 
@@ -22,5 +23,5 @@ router.get('/', function(req, res) {
       }
 })
 
-router.post('/analytics:FoodTypeID', models.showmeat);
+router.post('/showType/:FoodTypeID', models.showType);
 module.exports = router
