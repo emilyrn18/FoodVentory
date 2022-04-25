@@ -32,6 +32,9 @@
             <input type="text" placeholder="fridge" name="storage" required>
             <label for="foodtype"><b>Food Type</b></label>
             <select name="foodtype" id="foodtypes">
+                <% typeData.forEach(function(typeData){ %>
+                        <option><%= typeData.Category %></option>
+                <% }) %>
             </select>
 
             <h2 class="section-title">Nutrition Facts</h2>

@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
         console.log(e);
         res.send("Error! Please try again")
     }
-    res.render('addnewitem')
+    // res.render('addnewitem')
 })
 
 router.post('/addnewitem', models.addnewitem)
