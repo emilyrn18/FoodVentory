@@ -33,7 +33,9 @@ const newItemRouter = require('./public/routes/addnewitem')
 const oldItemRouter = require('./public/routes/addolditem')
 const inventoryRouter = require('./public/routes/inventory')
 const foodbytypeRouter = require('./public/routes/foodbytype')
+const nutritionRouter = require('./public/routes/nutrition')
 const userprofileRouter = require('./public/routes/userprofile')
+
 
 app.use('/', loginRouter)
 app.use('/createacc', createAccRouter)
@@ -42,7 +44,9 @@ app.use('/addnewitem', newItemRouter)
 app.use('/addolditem', oldItemRouter)
 app.use('/inventory', inventoryRouter) 
 app.use('/foodbytype', foodbytypeRouter)
+app.use('/nutrition', nutritionRouter)
 app.use('/userprofile', userprofileRouter)
+
 
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`); 
