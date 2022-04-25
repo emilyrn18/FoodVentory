@@ -24,14 +24,14 @@ exports.addnewitem =  async(req, res) =>{
         const proteinVar = req.body.protein;
         const quantityVar = req.body.quantity;
 
-        const uniqueNutId = 888888888;
-        const uniqueItemId = 102384566;
+        const uniqueNutId = Math.floor(Math.random() * 1000000000);
+        const uniqueItemId = Math.floor(Math.random() * 1000000000);
         const uniqueUserId = 'b65207cc';
 
 
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
         var yyyy = today.getFullYear();
 
         today = yyyy + '-' + mm + '-' + dd;
@@ -41,9 +41,6 @@ exports.addnewitem =  async(req, res) =>{
               console.log(error);
             }else{
               console.log("Success add to nutrition");
-              //res.send("Success! You are now registered")
-              // res.status(200).redirect('/')
-              //todo: maybe tell the user to go to login, redirecting to login after account creation
             }
         })
         
@@ -52,18 +49,13 @@ exports.addnewitem =  async(req, res) =>{
             if(error){
               console.log(error);
             }else{
-              //res.send("Success! You are now registered")
-              // res.status(200).redirect('/')
-              //todo: maybe tell the user to go to login, redirecting to login after account creation
               console.log("Success get food type id");
-              db.query("INSERT INTO food (ItemID, User_ID, NutritionID, FoodTypeID, Cost, Expiration_Date, Purchase_Time, Storage, Name) VALUES ('"+uniqueItemId+"','"+uniqueUserId+"','"+uniqueNutId+"','"+foodtypeid[0].FoodTypeID+"','"+costUSD+"','"+expDate+"','"+today+"','"+storageType+"','"+itemName+"')", (error, result2) => {
+              db.query("INSERT INTO food (ItemID, User_ID, NutritionID, FoodTypeID, Cost, Expiration_Date, Purchase_Time, Storage, name, quantity) VALUES ('"+uniqueItemId+"','"+uniqueUserId+"','"+uniqueNutId+"','"+foodtypeid[0].FoodTypeID+"','"+costUSD+"','"+expDate+"','"+today+"','"+storageType+"','"+itemName+"','"+quantityVar+"')", (error, result2) => {
                 if(error){
                   console.log(error);
                 }else{
-                  //res.send("Success! You are now registered")
                   console.log("Success add food item");
                   res.status(200).redirect('/inventory');
-                  //todo: maybe tell the user to go to login, redirecting to login after account creation
                 }
               })
             }
