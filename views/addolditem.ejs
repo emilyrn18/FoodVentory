@@ -17,7 +17,8 @@
                     <option><%= inventoryData.name %></option>
                 <% }) %>
             </select>
-
+            <label for="expiration"><b>Expiration Date</b></label>
+            <input type="date" placeholder="Expiration Date" name="expiration" required>
             <label for="quantity"><b>Quantity</b></label>
             <input type="number" min="1" step="1" value="1" name="quantity" required>
 
