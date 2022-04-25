@@ -1,7 +1,6 @@
 const db = require('./db'); //require the database
 
 exports.showType = async(req, res) => {
-    console.log("inside meat data");
     try {
         if(req.params.FoodTypeID != null){
             db.query("SELECT * FROM food WHERE Use_Time IS null AND FoodTypeID='"+req.params.FoodTypeID+"'", (error, result) => {
