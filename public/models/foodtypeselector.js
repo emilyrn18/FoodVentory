@@ -25,7 +25,6 @@ exports.addnewitem =  async(req, res) =>{
         const quantityVar = req.body.quantity;
 
         const uniqueNutId = Math.floor(Math.random() * 1000000000);
-        const uniqueItemId = Math.floor(Math.random() * 1000000000);
         const uniqueUserId = 'b65207cc';
 
 
@@ -50,14 +49,19 @@ exports.addnewitem =  async(req, res) =>{
               console.log(error);
             }else{
               console.log("Success get food type id");
-              db.query("INSERT INTO food (ItemID, User_ID, NutritionID, FoodTypeID, Cost, Expiration_Date, Purchase_Time, Storage, name, quantity) VALUES ('"+uniqueItemId+"','"+uniqueUserId+"','"+uniqueNutId+"','"+foodtypeid[0].FoodTypeID+"','"+costUSD+"','"+expDate+"','"+today+"','"+storageType+"','"+itemName+"','"+quantityVar+"')", (error, result2) => {
-                if(error){
-                  console.log(error);
-                }else{
-                  console.log("Success add food item");
-                  res.status(200).redirect('/inventory');
-                }
-              })
+
+              for(i=0;i<quantityVar;i++){
+                const uniqueItemId = Math.floor(Math.random() * 1000000000);
+                db.query("INSERT INTO food (ItemID, User_ID, NutritionID, FoodTypeID, Cost, Expiration_Date, Purchase_Time, Storage, name) VALUES ('"+uniqueItemId+"','"+uniqueUserId+"','"+uniqueNutId+"','"+foodtypeid[0].FoodTypeID+"','"+costUSD+"','"+expDate+"','"+today+"','"+storageType+"','"+itemName+"')", (error, result2) => {
+                  if(error){
+                    console.log(error);
+                  }else{
+                    console.log("Success add food item");
+                  }
+                })
+              }
+              console.log("DONE!");
+              res.status(200).redirect('/inventory');
             }
         })
 
