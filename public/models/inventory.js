@@ -7,7 +7,7 @@ exports.consume = async(req, res) => {
         if(error){
           console.log(error);
         }else{
-            res.render('/');
+          res.status(200).redirect('/inventory')
         }
       })
     } 
