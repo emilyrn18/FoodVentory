@@ -6,7 +6,7 @@ const db = require('../models/db');
 //The first page of the website '/'
 router.get('/', function(req, res) {
     try {
-        db.query("SELECT * FROM food", async(error, result) => {
+        db.query("SELECT DISTINCT name FROM food", async(error, result) => {
             console.log("In query");
             if(error){
                 console.log(error);
