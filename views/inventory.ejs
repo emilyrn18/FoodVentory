@@ -17,11 +17,36 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
         $(".fooditem").load("../components/fooditem.html"); 
         });
     </script>  -->
-    <script type='module' src='/javascript/inventory.js'> </script>
+    <!--  import this file -->
+    <!-- <script type='text/javascript' src='/inventory/inventory'> </script> -->
+    
+    <script>
+        function runit(){
+              //  fetch('/inventory/inventory').
+              //  then(response => response.json()).
+              //  then(data => console.log(data));
+
+              console.log(result);
+               
+        } 
+    </script>
+
 
 </head>
 
-<body onload="loadInventory()">
+<body>
+    <button onclick="runit()"> HEYHEY </button>
+    
+    <form action="/inventory/inventory" method="POST">
+        <button type="submit"> HIHI </button>
+    </form>
+
+    <% result.forEach(function(result){ %>
+        <% if(result !== null){ %>
+            <div><%= result.name %></div>
+        <% } %>
+    <% }) %>
+
     <div class="topnav">
         <a class="active" href="/inventory">Inventory</a>
         <a href="/additem">Add Item</a>
