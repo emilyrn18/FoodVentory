@@ -34,6 +34,7 @@ const oldItemRouter = require('./public/routes/addolditem')
 const inventoryRouter = require('./public/routes/inventory')
 const foodbytypeRouter = require('./public/routes/foodbytype')
 const nutritionRouter = require('./public/routes/nutrition')
+const userprofileRouter = require('./public/routes/userprofile')
 
 
 app.use('/', loginRouter)
@@ -44,6 +45,7 @@ app.use('/addolditem', oldItemRouter)
 app.use('/inventory', inventoryRouter) 
 app.use('/foodbytype', foodbytypeRouter)
 app.use('/nutrition', nutritionRouter)
+app.use('/userprofile', userprofileRouter)
 
 
 app.listen(port, () => {
