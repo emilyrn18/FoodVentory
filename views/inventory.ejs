@@ -11,15 +11,42 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
     <link rel="stylesheet" type="text/css" href="css/inventory.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
 
-    <script type='text/javascript' src='../node_modules\jquery\dist\jquery.js'> </script>
-    <script> 
+    <!-- <script type='text/javascript' src='/node_modules\jquery\dist\jquery.js'> </script> -->
+    <!-- <script> 
         $(function(){
         $(".fooditem").load("../components/fooditem.html"); 
         });
-    </script> 
+    </script>  -->
+    <!--  import this file -->
+    <!-- <script type='text/javascript' src='/inventory/inventory'> </script> -->
+    
+    <script>
+        function runit(){
+              //  fetch('/inventory/inventory').
+              //  then(response => response.json()).
+              //  then(data => console.log(data));
+
+              console.log(result);
+               
+        } 
+    </script>
+
+
 </head>
 
 <body>
+    <button onclick="runit()"> HEYHEY </button>
+    
+    <form action="/inventory/inventory" method="POST">
+        <button type="submit"> HIHI </button>
+    </form>
+
+    <% result.forEach(function(result){ %>
+        <% if(result !== null){ %>
+            <div><%= result.name %></div>
+        <% } %>
+    <% }) %>
+
     <div class="topnav">
         <a class="active" href="/inventory">Inventory</a>
         <a href="/additem">Add Item</a>
