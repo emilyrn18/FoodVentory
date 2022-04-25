@@ -10,42 +10,27 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/inventory.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/fooditem.css">
 
-    <!-- <script type='text/javascript' src='/node_modules\jquery\dist\jquery.js'> </script> -->
-    <!-- <script> 
-        $(function(){
-        $(".fooditem").load("../components/fooditem.html"); 
-        });
-    </script>  -->
-    <!--  import this file -->
-    <!-- <script type='text/javascript' src='/inventory/inventory'> </script> -->
-    
-    <script>
-        function runit(){
-              //  fetch('/inventory/inventory').
-              //  then(response => response.json()).
-              //  then(data => console.log(data));
-
-              console.log(result);
-               
-        } 
-    </script>
-
+        <!-- @source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce -->
+    <%    function groupBy(objectArray, property) {           %>
+    <%        return objectArray.reduce(function (acc, obj) { %>
+    <%          let key = obj[property]    %>
+    <%            if (!acc[key]) {  %>
+    <%            acc[key] = []  %>
+    <%          }  %>
+    <%        if (obj['Use_Time'] !== null  ){ %>
+    <%          acc[key].push(obj);  %>
+    <%        }  else {    %>
+    <%          acc[key].unshift(obj);  %>
+    <%        }   %>
+    <%          return acc  %>
+    <%        }, {})  %>
+    <%      }  %>
 
 </head>
 
 <body>
-    <button onclick="runit()"> HEYHEY </button>
-    
-    <form action="/inventory/inventory" method="POST">
-        <button type="submit"> HIHI </button>
-    </form>
-
-    <% result.forEach(function(result){ %>
-        <% if(result !== null){ %>
-            <div><%= result.name %></div>
-        <% } %>
-    <% }) %>
 
     <div class="topnav">
         <a class="active" href="/inventory">Inventory</a>
@@ -72,21 +57,26 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
                 <button id="add-btn" type="button" class="additem" onclick="location.href='/additem';">Add Item</button>
             </form>
             
-            <div class="scroll">
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
-                <div class="fooditem"></div>
+            <div id="inventory-list" class="scroll">
+                <% var t = groupBy(result, 'name'); %>
+                <% Object.keys(t).forEach( key => { %>
+                <% if(t[key][0]['Use_Time'] === null) { %>
+                     <div class="foodcard">
+                        <p class="foodname"><%= key %></p>
+                        <p class="quantity"><%= t[key].length %></p>
+                        <button type="button" id="nutrition" class="nutritionbut" onclick="location.href='nutrition';">Nutrition Facts</button>
+
+                        <% var linkbldr = "/inventory/consume/" + t[key][0]['ItemID']; %>
+                        <form action=<%= linkbldr %> method="POST">
+                        <button type="submit" id="consumedFood" class="consumedBut">Consume</button>
+                        </form>
+                    
+                        <% var linkbldr = "/inventory/throw/" + t[key][0]['ItemID']; %>
+                        <form action=<%= linkbldr %> method="POST">
+                            <button type="submit" id="thrownFood" class="thrownBut">Thrown Away</button>
+                        </form>
+                    </div>
+                <% }}) %> 
             </div>
 
         </div>

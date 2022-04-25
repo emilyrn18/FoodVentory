@@ -11,12 +11,8 @@ router.get('/', function(req, res) {
             if(error){
               console.log(error);
             }else{
-              console.log(result);
               res.render('inventory', {'result': result, 'post': false})
     
-              //return result;
-    
-              //todo: maybe tell the user to go to login, redirecting to login after account creation
             }
           })
         } 
@@ -24,15 +20,9 @@ router.get('/', function(req, res) {
             console.log(e);
             res.send("Error! Please try again")
         }
-    //res.render('inventory')
 })
 
-router.get('/inventory', models.inventory)
-// router.get('/inventory', (req, res) => {
-//     console.log('birds and bears');
-//     //res.render('/createaccount')
-//     //models.loadUserFood();
-//     //res.send('Birds home page')
-//   })
+router.post('/consume/:FoodID', models.consume)
+router.post('/throw/:FoodID', models.throw)
 
 module.exports = router
