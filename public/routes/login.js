@@ -5,5 +5,5 @@ router.get('/', function(req, res) {
     res.render('login')
 })
 
-// router.post('/login', models.login)
+router.post('/login', models.login)
 module.exports = router
