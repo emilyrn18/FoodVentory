@@ -4,17 +4,19 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/addItemForm.css">
+    <script type='text/javascript' src="foodtypeselector"></script>
+
 </head>
 
 <body>
-    <form id="no-form" action="/inventory">
+    <form id="no-form" action="/addolditem/addolditem" method="POST">
         <div class="container">
             <h2 class="section-title">Select Item</h2>
-            <select name="Food items in inventory" id="current-food-items">
-                <option value="corn">Corn</option>
+            <select name="currentfooditems" id="currentfooditemsid">
+                <% inventoryData.forEach(function(inventoryData){ %>
+                    <option><%= inventoryData.name %></option>
+                <% }) %>
             </select>
-            <label for="expiration"><b>Expiration Date</b></label>
-            <input type="date" placeholder="Expiration Date" name="expiration" required>
 
             <label for="quantity"><b>Quantity</b></label>
             <input type="number" min="1" step="1" value="1" name="quantity" required>
