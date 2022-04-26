@@ -4,6 +4,9 @@ const models = require('../models/nutrition')
 const db = require('../models/db')
 
 //The first page of the website '/'
+
+router.post('/update/:NutrID', models.update)
+
 router.get('/', function(req, res) {
     try {
         db.query("SELECT * FROM nutrition WHERE NutritionID=" + req.query.nutrID, (error, result) => {
@@ -35,5 +38,4 @@ router.get('/', function(req, res) {
 })
 
 
-// router.post('/n/:NutritionID', models.getNutrition)
 module.exports = router
