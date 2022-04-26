@@ -5,18 +5,22 @@
 </header>   
 <body>
     <h2>Nutrition Facts About:</h2>
-    <h4 id="food-name"><%= foodName %></h4>
-    <form name="update-form">      
+    <h4 id="food-name">Food: <%= foodName %></h4>
+    <h4 id="food-quantity"> Quantity: <%= quantity %></h4>
+    <button><a href="/additem">Add Item</a></button>
+    <% var linkbldr = '/nutrition/update/' + result[0]['NutritionID'] %>
+    <form name="update-form" method="POST" action=<%= linkbldr %> >      
 
         <h2 class="section-title">Nutrition Facts</h2>
 
         <label for="fat"><b>Total Fat</b></label>
+        
 
         <input id="item-fat" type="number" placeholder=<%= result[0]['Total_Fat'] || 0 %> name="fat">
 
 
         <label for="serving-size"><b>Serving Size</b></label>
-        <input id="item-serving-size" type="number" placeholder=<%= result[0]['Serving_Size'] || 1 %> name="serving-size">
+        <input id="item-serving-size" type="number" placeholder=<%= result[0]['Serving_Size'] || 1 %> name="serving_size">
 
         <label for="calories"><b>Calories</b></label>
         <input id="item-calories" type="number" placeholder=<%= result[0]['Calories']  || 0 %> name="calories">
@@ -25,18 +29,17 @@
         <input id="item-sugar" type="number" placeholder=<%= result[0]['Sugar'] || 0 %> name="sugar">
         
         <label for="total-calories"><b>Total Calories</b></label>
-        <input id="item-total-calories" type="number" placeholder=<%= result[0]['Calories'] || 0%> name="total-calories">
+        <input id="item-total-calories" type="number" placeholder=<%= result[0]['Calories'] || 0%> name="total_calories">
         
         <label for="sodium"><b>Sodium</b></label>
         <input id="item-sodium" type="number" placeholder=<%= result[0]['Sodium'] || 0 %> name="sodium">
     
         <label for="protein"><b>Protein</b></label>
         <input id="item-protein" type="number" placeholder=<%=result[0]['Protein'] || 0 %> name="protein">
-
-        <label for="quantity"><b>Quantity</b></label>
-        <input id="item-quantity" type="number" min="1" step="1" value=<%= quantity %> name="quantity">
-
-        <button type="submit">Save Changes</button>
-        <button type="button" id="cancel-id" class="cancel-but" onclick="location.href='html/inventory.html';">Cancel</button>
+ 
+        <!-- + result[0]['NutritionID'] %> -->
+        <button type="submit"> >Save Changes</button>
     </form>
+    <button type="button" id="cancel-id" class="cancel-but" onclick="location.href='../views/inventory.ejs';">Cancel</button>
+
 </body>
