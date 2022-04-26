@@ -7,7 +7,7 @@ const db = require('../models/db')
 router.get('/', function(req, res) {
     try {
     
-        db.query("SELECT * FROM food WHERE Use_Time IS null", (error, result) => {
+        db.query("SELECT * FROM food", (error, result) => {
           if(error){
             console.log(error);
           }else{

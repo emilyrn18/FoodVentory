@@ -61,7 +61,11 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
                      <div class="foodcard">
                         <p class="foodname"><%= key %></p>
                         <p class="quantity"><%= t[key].length %></p>
-                        <button type="button" id="nutrition" class="nutritionbut" onclick="location.href='nutrition';">Nutrition Facts</button>
+                        
+                        <%var linkbldr = '/nutrition?nutrID=' + t[key][0].NutritionID %>
+                        <form action=<%=linkbldr %> method="POST">
+                        <button type="submit" id="nutrition" class="nutritionbut" >Nutrition Facts</button>
+                        </form> 
 
                         <% var linkbldr = "/inventory/consume/" + t[key][0]['ItemID']; %>
                         <form action=<%= linkbldr %> method="POST">
