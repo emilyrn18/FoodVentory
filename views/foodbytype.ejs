@@ -54,14 +54,38 @@
         </div>
 
         <div id="chart" ></div>
+        <% var b = groupBy(result, 'name'); %>
         <script>
             anychart.onDocumentReady(function () {
+                var meat = 0;
+                var dairy = 0;
+                var veg = 0;
+                var fruit = 0;
+                var carb = 0;
+                <% Object.keys(b).forEach( key => { %>
+                    <% if(b[key][0]['Use_Time'] === null) { %> 
+                        keyLen=<%= b[key].length %>
+                        // for(i=0;i<keyLen;i++){ 
+                        foodtype = <%=b[key][0]['FoodTypeID'] %>
+                        if(foodtype == 0){
+                            meat += keyLen;
+                        }else if(foodtype == 1){
+                            dairy += keyLen;
+                        }else if(foodtype == 2){
+                            veg += keyLen;
+                        }else if(foodtype == 3){
+                            fruit += keyLen;
+                        }else if(foodtype == 4){
+                            carb += keyLen;
+                        }
+                        // }
+                 <% }}) %>
                 var data = [
-                    { x: "Meat", value: 4 },
-                    { x: "Dairy", value: 5 },
-                    { x: "Vegetables", value: 4 },
-                    { x: "Fruits", value: 12 },
-                    { x: "Carbs", value: 12 }
+                    { x: "Meat", value: meat },
+                    { x: "Dairy", value: dairy },
+                    { x: "Vegetables", value: veg },
+                    { x: "Fruits", value: fruit },
+                    { x: "Carbs", value: carb }
                 ];
 
                 var chart = anychart.pie();
@@ -85,8 +109,33 @@
                 <button id="carb-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+4 %>> Carbs </button>
             </form>
             <button id="all-foodtype" class="foodtype" onclick="location.href='/foodbytype';"> All </button>
-
         </div>
+        <div id="charttwo" ></div>
+        <script>
+            anychart.onDocumentReady(function () {
+                var chartData = new Array();
+                var counter = 0;
+                <% Object.keys(t).forEach( key => { %>
+                    <% if(t[key][0]['Use_Time'] === null) { %> 
+                        var quant = <%= t[key].length %>
+                        var name = '<%= key %>'
+                        var foodObj = {x: name, value: quant};
+                        chartData[counter] = foodObj;
+                        counter += 1;
+                    <% }}) %>
+
+
+                var data = chartData;
+
+                var chart = anychart.pie();
+                chart.title("Breakdown by Food for Each Type");
+                chart.data(data);
+                chart.container('charttwo');
+                chart.draw();
+                chart.width = '1000px';
+                chart.height = '1000px';
+            });
+        </script>
         <span id="foodtype-list">
             <section class="inventory">
                 <div id="food-content" class="scroll">
