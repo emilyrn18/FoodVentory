@@ -7,6 +7,9 @@ const db = require('../models/db')
 
 router.post('/update/:NutrID', models.update)
 
+router.post('/', models.goToIt)
+
+
 router.get('/', function(req, res) {
     try {
         db.query("SELECT * FROM nutrition WHERE NutritionID=" + req.query.nutrID, (error, result) => {

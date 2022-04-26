@@ -40,3 +40,9 @@ exports.update =  async(req, res) => {
         res.send("Error! Please try again")
     }
 }
+
+exports.goToIt =  async(req, res) => {
+
+   res.redirect('/nutrition?nutrID=' + req.query.nutrID);
+}
+
