@@ -3,7 +3,7 @@ const db = require('./db'); //require the database
 exports.showType = async(req, res) => {
     try {
         if(req.params.FoodTypeID != null){
-            db.query("SELECT * FROM food WHERE Use_Time IS null AND FoodTypeID='"+req.params.FoodTypeID+"'", (error, result) => {
+            db.query("SELECT * FROM food WHERE FoodTypeID='"+req.params.FoodTypeID+"'", (error, result) => {
                 if(error){
                     console.log(error);
                 }else{
@@ -11,7 +11,7 @@ exports.showType = async(req, res) => {
                 }
             })
         }else{
-            db.query("SELECT * FROM food WHERE Use_Time IS null", (error, result) => {
+            db.query("SELECT * FROM food", (error, result) => {
                 if(error){
                   console.log(error);
                 }else{
