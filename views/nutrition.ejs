@@ -7,7 +7,7 @@
     <h2>Nutrition Facts About:</h2>
     <h4 id="food-name">Food: <%= foodName %></h4>
     <h4 id="food-quantity"> Quantity: <%= quantity %></h4>
-    <button><a href="/additem">Add Item</a></button>
+    <button type="button" onclick="location.href='/additem';">Add Item</button>
     <% var linkbldr = '/nutrition/update/' + result[0]['NutritionID'] %>
     <form name="update-form" method="POST" action=<%= linkbldr %> >      
 
@@ -38,8 +38,8 @@
         <input id="item-protein" type="number" placeholder=<%=result[0]['Protein'] || 0 %> name="protein">
  
         <!-- + result[0]['NutritionID'] %> -->
-        <button type="submit"> >Save Changes</button>
+        <button type="submit"> Save Changes</button>
     </form>
-    <button type="button" id="cancel-id" class="cancel-but" onclick="location.href='../views/inventory.ejs';">Cancel</button>
+    <button type="button" id="cancel-id" class="cancel-but" onclick="location.href='/inventory';">Cancel</button>
 
 </body>
