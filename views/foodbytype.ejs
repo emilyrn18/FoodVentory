@@ -52,6 +52,18 @@
         <div class="topsection">
             <h1 id="welcomeTitle" class="header">Food Breakdown</h1>
         </div>
+        <div id="foodtype-buttons">
+            <% var t = groupBy(result, 'name'); %>
+            <% var linkbldr = "/foodbytype/showType/"; %>
+            <form name="dataform" action="/foodbytype" method="POST">
+                <button id="meat-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+0 %>> Meat </button>
+                <button id="dairy-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+1 %>> Dairy </button>
+                <button id="veggie-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+2 %>> Vegetables </button>
+                <button id="fruit-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+3 %>> Fruits </button>
+                <button id="carb-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+4 %>> Carbs </button>
+            </form>
+            <button id="all-foodtype" class="foodtype" onclick="location.href='/foodbytype';"> All </button>
+        </div>
 
         <div id="chart" ></div>
         <% var b = groupBy(result, 'name'); %>
@@ -89,7 +101,7 @@
                 ];
 
                 var chart = anychart.pie();
-                chart.title("Food Inventory Breakdown");
+                chart.title("Food Type Quantity Breakdown");
                 chart.data(data);
                 chart.container('chart');
                 chart.draw();
@@ -97,19 +109,6 @@
                 chart.height = '1000px';
             });
         </script>
-
-        <div id="foodtype-buttons">
-        <% var t = groupBy(result, 'name'); %>
-        <% var linkbldr = "/foodbytype/showType/"; %>
-            <form name="dataform" action="/foodbytype" method="POST">
-                <button id="meat-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+0 %>> Meat </button>
-                <button id="dairy-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+1 %>> Dairy </button>
-                <button id="veggie-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+2 %>> Vegetables </button>
-                <button id="fruit-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+3 %>> Fruits </button>
-                <button id="carb-foodtype" class="foodtype" type="submit" formaction=<%= linkbldr+4 %>> Carbs </button>
-            </form>
-            <button id="all-foodtype" class="foodtype" onclick="location.href='/foodbytype';"> All </button>
-        </div>
         <div id="charttwo" ></div>
         <script>
             anychart.onDocumentReady(function () {
@@ -128,9 +127,53 @@
                 var data = chartData;
 
                 var chart = anychart.pie();
-                chart.title("Breakdown by Food for Each Type");
+                chart.title("Breakdown of Food");
                 chart.data(data);
                 chart.container('charttwo');
+                chart.draw();
+                chart.width = '1000px';
+                chart.height = '1000px';
+            });
+        </script>
+        <div id="chartthree" ></div>
+        <script>
+            anychart.onDocumentReady(function () {
+                var chartData = new Array();
+                var counter = 0;
+                <% Object.keys(t).forEach( key => { %>
+                    <% if(t[key][0]['Use_Time'] === null) { %> 
+                        var quant = <%= t[key].length %>
+                        var name = '<%= t[key][0]['Storage'] %>'
+                       
+                        if(chartData.length > 0){
+                            var exists = false;
+                            for(i=0;i<chartData.length;i++){
+                                if(chartData[i].x == name){
+                                    exists = true;
+                                    break;
+                                }
+                            }
+                            if(!exists){
+                                exists = false;
+                                var foodObj = {x: name, value: quant};
+                                chartData[counter] = foodObj;
+                                counter += 1;
+                            }
+                        }else{
+                            var foodObj = {x: name, value: quant};
+                            chartData[counter] = foodObj;
+                            counter += 1;
+                        }
+                        
+                    <% }}) %>
+
+
+                var data = chartData;
+
+                var chart = anychart.pie();
+                chart.title("Food Quantity by Storage Space");
+                chart.data(data);
+                chart.container('chartthree');
                 chart.draw();
                 chart.width = '1000px';
                 chart.height = '1000px';
