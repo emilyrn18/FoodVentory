@@ -71,11 +71,7 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
                         <form action=<%= linkbldr %> method="POST">
                         <button type="submit" id="consumedFood" class="consumedBut">Consume</button>
                         </form>
-                    
-                        <% var linkbldr = "/inventory/throw/" + t[key][0]['ItemID']; %>
-                        <form action=<%= linkbldr %> method="POST">
-                            <button type="submit" id="thrownFood" class="thrownBut">Thrown Away</button>
-                        </form>
+
                     </div>
                 <% }}) %> 
             </div>

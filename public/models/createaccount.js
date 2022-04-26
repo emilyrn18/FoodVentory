@@ -22,6 +22,17 @@ exports.createacc = async(req, res) => {
           //todo: maybe tell the user to go to login, redirecting to login after account creation
         }
       })
+
+      db.query("INSERT INTO usertype (UserID, TypeOfUser) VALUES ('"+uniqueId+"','"+type+"')", (error, result) => {
+        if(error){
+          console.log(error);
+        }else{
+          //do nothing
+          console.log("Success on adding type");
+        }
+      })
+
+
     } 
     catch(e) {
         console.log(e);
