@@ -11,6 +11,7 @@ exports.createacc = async(req, res) => {
       const name = req.body.fname + " " + req.body.lname;
       // console.log("User name", name);
       const uniqueId = crypto.randomBytes(4).toString('hex');
+      const type = req.body.usertype;
       // console.log("My id", uniqueId);
 
       db.query("INSERT INTO user (UserID, Name, Age, Username, Password) VALUES ('"+uniqueId+"','"+name+"','"+req.body.bdate+"','"+req.body.email+"','"+hashedPassword+"')", (error, result) => {
@@ -22,6 +23,16 @@ exports.createacc = async(req, res) => {
           //todo: maybe tell the user to go to login, redirecting to login after account creation
         }
       })
+
+      db.query("INSERT INTO usertype (UserID, TypeOfUser) VALUES ('"+uniqueId+"','"+type+"')", (error, result) => {
+        if(error){
+          console.log(error);
+        }else{
+          //do nothing
+          console.log("Success on adding type");
+        }
+      })
+
     } 
     catch(e) {
         console.log(e);

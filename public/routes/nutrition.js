@@ -6,7 +6,8 @@ const db = require('../models/db')
 //The first page of the website '/'
 router.get('/', function(req, res) {
     try {
-        db.query("SELECT * FROM nutrition WHERE NutritionID=" + req.query.nutrID, (error, result) => {
+        //console.log("Nutrition ",req)
+        db.query("SELECT * FROM nutrition WHERE NutritionID=" + req.params.NutrID, (error, result) => {
             if(error){
               console.log(error);
             }else{
