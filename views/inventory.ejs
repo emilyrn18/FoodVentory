@@ -52,12 +52,8 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
     <!-- </div> -->
     <section class="inventory">
         <div class="bottomsection">
-            <form action="/action_page.php">
-                <input type="text" placeholder="Search...">                
-                <button id="search-btn" type="submit">Submit</button>
-                <button id="add-btn" type="button" class="additem" onclick="location.href='/additem';">Add Item</button>
-            </form>
-            
+            <button id="add-btn" type="button" class="additem" onclick="location.href='/additem';">Add Item</button>
+
             <div id="inventory-list" class="scroll">
                 <% var t = groupBy(result, 'name'); %>
                 <% Object.keys(t).forEach( key => { %>
