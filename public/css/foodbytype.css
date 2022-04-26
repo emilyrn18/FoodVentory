@@ -19,3 +19,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     padding: 6px;
 }
+
+#historytitle {
+    text-align: center;
+}

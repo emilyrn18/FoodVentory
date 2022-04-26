@@ -12,15 +12,8 @@ router.get('/', function(req, res) {
             console.log(error);
           }else{
             console.log("getting the results");
-            db.query("SELECT * FROM food WHERE Use_Time IS null", (error, realresult) => {
-              if(error){
-                console.log(error);
-              }else{
-                console.log("getting the results");
-                res.render('foodbytype', {'result': result, 'realresult': realresult, 'post': false})
-
-              }
-            })
+            res.render('foodbytype', {'result': result, 'post': false})
+            
           }
         })
       } 

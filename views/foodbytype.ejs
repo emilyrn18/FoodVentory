@@ -232,19 +232,25 @@
                 chart.height = '1000px';
             });
         </script>
-        <% var k = groupBy(realresult, 'name'); %>
-        
         <span id="foodtype-list">
+            <div id="historytitle">
+                <h3>History and Current Quantity</h3>
+            </div>
             <section class="inventory">
                 <div id="food-content" class="scroll">
-                    <% Object.keys(k).forEach( key => { %>
-                    <% if(k[key][0]['Use_Time'] === null) { %>
+                    <% Object.keys(t).forEach( key => { %>
+                    <% var itemcounterr = 0;%>
+                        <% Object.keys(t[key]).forEach( g => { %>
+                            <% if(t[key][g]['Use_Time'] === null) { %>
+                                <% itemcounterr += 1 %>
+                        <% }}) %>
                         <div class="foodcard">
                             <p class="foodname"><%= key %></p>
-                            <p class="quantity"><%= k[key].length %></p>
+                            <p class="quantity"><%= itemcounterr %></p>
                             <button type="button" id="nutrition" class="nutritionbut" onclick="location.href='nutrition';">Nutrition Facts</button>
                         </div>
-                    <% }}) %> 
+                    
+                    <% }) %> 
                 </div>
             </section>
         </span>
