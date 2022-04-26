@@ -12,6 +12,7 @@ exports.createacc = async(req, res) => {
       // console.log("User name", name);
       const uniqueId = crypto.randomBytes(4).toString('hex');
       // console.log("My id", uniqueId);
+      const type = req.body.usertype;
 
       db.query("INSERT INTO user (UserID, Name, Age, Username, Password) VALUES ('"+uniqueId+"','"+name+"','"+req.body.bdate+"','"+req.body.email+"','"+hashedPassword+"')", (error, result) => {
         if(error){
